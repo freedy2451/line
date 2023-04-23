@@ -47,9 +47,18 @@ def handle_message(event):
     elif msg == '你吃飯了沒':
         r = '還沒'
 
+    sticker_msg = StickerSendMessage(
+    package_id='1',
+    sticker_id='1'
+    )
+
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=r))
+        #TextSendMessage(text=r)
+        StickerSendMessage(
+        package_id='1',
+        sticker_id='1'
+        ))
 
 
 if __name__ == "__main__":
