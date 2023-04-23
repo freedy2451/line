@@ -42,23 +42,30 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     r = '我看不懂'
+    
+    if '給我貼圖' in msg:
+        sticker_msg = StickerSendMessage(
+        package_id='1',
+        sticker_id='1'
+        )    
+        line_bot_api.reply_message(
+        event.reply_token,
+        sticker_msg)
+        
+        return
+
+
+
     if msg in ['hi', 'Hi']:
         r = 'hi'
     elif msg == '你吃飯了沒':
         r = '還沒'
-
-    sticker_msg = StickerSendMessage(
-    package_id='1',
-    sticker_id='1'
-    )
+    elif '定位' in msg:
+        r = '你想定位，是嗎?'
 
     line_bot_api.reply_message(
         event.reply_token,
-        #TextSendMessage(text=r)
-        StickerSendMessage(
-        package_id='1',
-        sticker_id='1'
-        ))
+        TextSendMessage(text=r))
 
 
 if __name__ == "__main__":
