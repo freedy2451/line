@@ -42,7 +42,7 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     r = '我看不懂'
-    if msg == 'hi':
+    if msg in ['hi', 'Hi']:
         r = 'hi'
     elif msg == '你吃飯了沒':
         r = '還沒'
